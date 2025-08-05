@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esportes aquáticos - Aorus</title>
+
+    <link rel="stylesheet" href="{{url_for ('static', filename = 'css/paginas.css')}}">
+
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="a-input">
+                <img src="{{url_for('static' , filename = 'imagens/imgs/aorussports.png')}}" alt="Logotipo da Orus">
+                <input type="search" placeholder="Buscar produtos, marcas e muito mais...">
+                <nav>
+                    <ul>
+                        <li><a href="{{url_for('index')}}">Página inicial</a></li>
+                        <li><a href="{{url_for('categorias')}}">Categorias</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Ofertas do dia</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="a-lista">
+                <nav>
+                    <ul>
+                    {# Verifica se o usuário está autenticado #}
+                    {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('dashboard') }}">Olá, {{ current_user.username }}</a></li>
+                    <br>
+                    <li><a href="{{ url_for('logout') }}">Sair</a></li>
+                    <br>
+                    {% else %}
+                    <li><a href="{{ url_for('cadastro') }}">Cadastrar-se</a></li>
+                    <br>
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <br>
+                    {% endif %}
+                    <li><a href="{{ url_for('carrinho') }}"><img src="{{ url_for('static', filename='imagens/imgs/carrinho.png') }}" width="30"></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div class="sidebar">
+            <div class="cards">
+                <img src="{{ url_for('static', filename='imagens/aqua/touca.webp') }}" alt="">
+                <p>Touca para natação</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='imagens/aqua/touca.webp') }}">
+                        <input type="hidden" name="product_description" value="Touca">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+
+            <div class="cards">
+                <img src="{{ url_for('static', filename='imagens/aqua/camiseta.webp') }}" alt="">
+                <p>Camiseta Térmica Manga Longa</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='imagens/aqua/camiseta.webp') }}">
+                        <input type="hidden" name="product_description" value="Camiseta Térmica">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+
+            <div class="cards">
+                <img src="{{ url_for('static', filename='imagens/aqua/bolsa.webp') }}" alt="">
+                <p>Bolsa Resistente a água</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='imagens/aqua/bolsa.webp') }}">
+                        <input type="hidden" name="product_description" value="Bolsa">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+
+            <div class="cards">
+                <img src="{{ url_for('static', filename='imagens/aqua/capa.png') }}" alt="">
+                <p>Capa para prancha de surf</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='imagens/aqua/capa.png') }}">
+                        <input type="hidden" name="product_description" value="Capa para prancha">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="cards">
+                <img src="{{ url_for('static', filename='imagens/aqua/colete.webp') }}" alt="">
+                <p>Colete salva-vidas</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='imagens/aqua/colete.webp') }}">
+                        <input type="hidden" name="product_description" value="Colete salva-vidas">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+
+            <div class="cards">
+                <img src="{{ url_for('static', filename='imagens/aqua/oculos.webp') }}" alt="">
+                <p>Óculos para natação</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='imagens/aqua/oculos.webp') }}">
+                        <input type="hidden" name="product_description" value="Òculos">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+
+            <div class="cards">
+                <img src="{{ url_for('static', filename='imagens/aqua/prancha.webp') }}" alt="">
+                <p>Prancha de Surf Shortboard</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='imagens/aqua/prancha.webp') }}">
+                        <input type="hidden" name="product_description" value="Prancha de surf">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+
+            <div class="cards">
+                <img src="{{ url_for('static', filename='imagens/aqua/longa.webp') }}" alt="">
+                <p>Long Jhon Manga Longa</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='imagens/aqua/longa.webp') }}">
+                        <input type="hidden" name="product_description" value="Long Jhon">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 $ - Todos os direitos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>

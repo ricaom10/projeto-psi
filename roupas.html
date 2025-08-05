@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roupas esportivas - Aorus</title>
+
+    <link rel="stylesheet" href="{{url_for ('static', filename = 'css/paginas.css')}}">
+
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="a-input">
+                <img src="{{url_for('static' , filename = 'imagens/imgs/aorussports.png')}}" alt="Logotipo da Orus">
+                <input type="search" placeholder="Buscar produtos, marcas e muito mais...">
+                <nav>
+                    <ul>
+                        <li><a href="{{url_for('index')}}">Página inicial</a></li>
+                        <li><a href="{{url_for('categorias')}}">Categorias</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Ofertas do dia</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="a-lista">
+                <nav>
+                    <ul>
+                    {# Verifica se o usuário está autenticado #}
+                    {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('dashboard') }}">Olá, {{ current_user.username }}</a></li>
+                    <br>
+                    <li><a href="{{ url_for('logout') }}">Sair</a></li>
+                    <br>
+                    {% else %}
+                    <li><a href="{{ url_for('cadastro') }}">Cadastrar-se</a></li>
+                    <br>
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <br>
+                    {% endif %}
+                    <li><a href="{{ url_for('carrinho') }}"><img src="{{ url_for('static', filename='imagens/imgs/carrinho.png') }}" width="30"></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        
+        <!-- A partir daqui começam os cards dos produtos -->
+        <div class="sidebar">
+            <div class="cards">
+                <img src="{{ url_for('static', filename='imagens/roupas/vestido.png') }}" alt="">
+                <p>Vestido</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='Foto/Foto_seção_de_ação.webp') }}">
+                        <input type="hidden" name="product_description" value="ROUPAS">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+
+            <div class="cards">
+                <img src="{{ url_for('static', filename='imagens/roupas/camisa.png') }}" alt="">
+                <p>Camisa</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='Foto/Foto_seção_de_corrida.webp') }}">
+                        <input type="hidden" name="product_description" value="ACESSÓRIOS">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+
+            <div class="cards">
+                <img src="{{ url_for('static', filename='imagens/roupas/calça.png') }}" alt="">
+                <p>EQUIPAMENTOS ESPORTIVOS</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='Foto/Foto_seção_de_basquete.webp') }}">
+                        <input type="hidden" name="product_description" value="EQUIPAMENTOS ESPORTIVOS">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+
+            <div class="cards">
+                <img src="{{ url_for('static', filename='Foto/Foto_seção_de_luta.webp') }}" alt="">
+                <p>VÔLEI</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='Foto/Foto_seção_de_luta.webp') }}">
+                        <input type="hidden" name="product_description" value="VÔLEI">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="cards">
+                <img src="{{ url_for('static', filename='Foto/Foto_seção_de_luta.webp') }}" alt="">
+                <p>CICLISMO</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='Foto/Foto_seção_de_luta.webp') }}">
+                        <input type="hidden" name="product_description" value="CICLISMO">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+
+            <div class="cards">
+                <img src="{{ url_for('static', filename='Foto/Foto_seção_de_luta.webp') }}" alt="">
+                <p>NATAÇÃO</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='Foto/Foto_seção_de_luta.webp') }}">
+                        <input type="hidden" name="product_description" value="NATAÇÃO">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+
+            <div class="cards">
+                <img src="{{ url_for('static', filename='Foto/Foto_seção_de_luta.webp') }}" alt="">
+                <p>ESPORTES COM TACOS</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='Foto/Foto_seção_de_luta.webp') }}">
+                        <input type="hidden" name="product_description" value="ESPORTES COM TACOS">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+
+            <div class="cards">
+                <img src="{{ url_for('static', filename='Foto/Foto_seção_de_luta.webp') }}" alt="">
+                <p>AUTOMOBILISMO</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='Foto/Foto_seção_de_luta.webp') }}">
+                        <input type="hidden" name="product_description" value="AUTOMOBILISMO">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 $ - Todos os direitos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>

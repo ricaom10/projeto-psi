@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volei - Aorus</title>
+
+    <link rel="stylesheet" href="{{url_for ('static', filename = 'css/paginas.css')}}">
+
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="a-input">
+                <img src="{{url_for('static' , filename = 'imagens/imgs/aorussports.png')}}" alt="Logotipo da Orus">
+                <input type="search" placeholder="Buscar produtos, marcas e muito mais...">
+                <nav>
+                    <ul>
+                        <li><a href="{{url_for('index')}}">Página inicial</a></li>
+                        <li><a href="{{url_for('categorias')}}">Categorias</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Ofertas do dia</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="a-lista">
+                <nav>
+                    <ul>
+                    {# Verifica se o usuário está autenticado #}
+                    {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('dashboard') }}">Olá, {{ current_user.username }}</a></li>
+                    <br>
+                    <li><a href="{{ url_for('logout') }}">Sair</a></li>
+                    <br>
+                    {% else %}
+                    <li><a href="{{ url_for('cadastro') }}">Cadastrar-se</a></li>
+                    <br>
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <br>
+                    {% endif %}
+                    <li><a href="{{ url_for('carrinho') }}"><img src="{{ url_for('static', filename='imagens/imgs/carrinho.png') }}" width="30"></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div class="sidebar">
+            <div class="cards">
+                <img src="{{ url_for('static', filename='imagens/volei/mikasa.webp') }}" alt="">
+                <p>Bola de volei Mikasa V350W</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='imagens/volei/mikasa.webp') }}">
+                        <input type="hidden" name="product_description" value="Mikasa V350W">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+
+            <div class="cards">
+                <img src="{{ url_for('static', filename='imagens/volei/joelh.jpg') }}" alt="">
+                <p>Jolheiras N1 Spry Pretas</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='Foto/Foto_seção_de_corrida.webp') }}">
+                        <input type="hidden" name="product_description" value="ACESSÓRIOS">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+
+            <div class="cards">
+                <img src="{{ url_for('static', filename='imagens/volei/rede.jpeg') }}" alt="">
+                <p>Rede adaptável para piscina</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='imagens/volei/rede.jpeg') }}">
+                        <input type="hidden" name="product_description" value="Rede para piscina">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+
+            <div class="cards">
+                <img src="{{ url_for('static', filename='imagens/volei/regata.webp') }}" alt="">
+                <p>Regata Feminina Brasil</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='imagens/volei/regata.webp') }}">
+                        <input type="hidden" name="product_description" value="Regata Brasil">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="cards">
+                <img src="{{ url_for('static', filename='imagens/volei/cotov.jpg') }}" alt="">
+                <p>Cotoveleira RS3 Adulto</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='imagens/volei/cotov.jpg') }}">
+                        <input type="hidden" name="product_description" value="Cotoveleira Adulto">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+
+            <div class="cards">
+                <img src="{{ url_for('static', filename='imagens/volei/manga.jpg') }}" alt="">
+                <p>Manguito Realtex</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='imagens/volei/manga.jpg') }}">
+                        <input type="hidden" name="product_description" value="Manguito Realtex">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+
+            <div class="cards">
+                <img src="{{ url_for('static', filename='imagens/volei/regataa.webp') }}" alt="">
+                <p>Regata Masculina Gerdau Minas</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='imagens/volei/regataa.webp') }}">
+                        <input type="hidden" name="product_description" value="Regata Gerdau Minas">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+
+            <div class="cards">
+                <img src="{{ url_for('static', filename='imagens/volei/bolaa.webp') }}" alt="">
+                <p>Bola de volei mikasa V200W</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='imagens/volei/bolaa.webp') }}">
+                        <input type="hidden" name="product_description" value="Mikasa V200W">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 $ - Todos os direitos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>

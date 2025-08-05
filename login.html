@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Aorus</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="box1">
+            <div class="foto">
+                <img src="{{ url_for('static', filename='imagens/imgs/usuario.jpg') }}" alt="Foto de Perfil">
+            </div>
+
+            <div class="login">
+                {# Mensagens Flash #}
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <ul class="flashes">
+                            {% for category, message in messages %}
+                                <li class="{{ category }}">{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+
+                <form method="POST" action="{{ url_for('login') }}">
+                    <h3><center>Login</center></h3>
+                    <p>Insira seu email:</p>
+                    <input type="email" name="email" placeholder="email" value="{{ email if email else '' }}" required autofocus>
+                    
+                    <p>Insira sua senha:</p>
+                    <input type="password" name="password" required>
+
+                    <div class="a-botao">
+                        <button type="submit" id="botao-submit">Login</button>
+                    </div>
+                </form>
+                <center>
+                <p style="margin-top: 20px;"><a href="{{ url_for('cadastro') }}" style="color: gold; text-decoration: none;">Ainda não tem conta? Cadastre-se</a></p>
+                <p><a href="{{ url_for('index') }}" style="color: gold; text-decoration: none;">Voltar para a Home</a></p>
+                </center>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

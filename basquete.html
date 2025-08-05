@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basquete - Aorus</title>
+
+    <link rel="stylesheet" href="{{url_for ('static', filename = 'css/paginas.css')}}">
+
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="a-input">
+                <img src="{{url_for('static' , filename = 'imagens/imgs/aorussports.png')}}" alt="Logotipo da Orus">
+                <input type="search" placeholder="Buscar produtos, marcas e muito mais...">
+                <nav>
+                    <ul>
+                        <li><a href="{{url_for('index')}}">Página inicial</a></li>
+                        <li><a href="{{url_for('categorias')}}">Categorias</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Ofertas do dia</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="a-lista">
+                <nav>
+                    <ul>
+                    {# Verifica se o usuário está autenticado #}
+                    {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('dashboard') }}">Olá, {{ current_user.username }}</a></li>
+                    <br>
+                    <li><a href="{{ url_for('logout') }}">Sair</a></li>
+                    <br>
+                    {% else %}
+                    <li><a href="{{ url_for('cadastro') }}">Cadastrar-se</a></li>
+                    <br>
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <br>
+                    {% endif %}
+                    <li><a href="{{ url_for('carrinho') }}"><img src="{{ url_for('static', filename='imagens/imgs/carrinho.png') }}" width="30"></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div class="sidebar">
+            <div class="cards">
+                <img src="{{ url_for('static', filename='imagens/basquete/LA.jpg') }}" alt="">
+                <p>Camisa Los Angeles Lakers</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='imagens/basquete/LA.jpg') }}">
+                        <input type="hidden" name="product_description" value="Camisa LA">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+
+            <div class="cards">
+                <img src="{{ url_for('static', filename='imagens/basquete/tabela.jpg') }}" alt="">
+                <p>Tabela e aro</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='imagens/basquete/tabela.jpg') }}">
+                        <input type="hidden" name="product_description" value="Tabela e aro">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+
+            <div class="cards">
+                <img src="{{ url_for('static', filename='imagens/basquete/tenis.webp') }}" alt="">
+                <p>Under Armour Jet 21 Masculino</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='imagens/basquete/tenis.webp') }}">
+                        <input type="hidden" name="product_description" value="Jet 21">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+
+            <div class="cards">
+                <img src="{{ url_for('static', filename='imagens/basquete/cotov.webp') }}" alt="">
+                <p>Cotoveleira Nike Basketball</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='imagens/basquete/cotov.webp') }}">
+                        <input type="hidden" name="product_description" value="Cotoveleira Nike">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="cards">
+                <img src="{{ url_for('static', filename='imagens/basquete/bulls.webp') }}" alt="">
+                <p>Bolsa sacola Chicago Bulls</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='imagens/basquete/bulls.webp') }}">
+                        <input type="hidden" name="product_description" value="Bolsa Chicago Bulls">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+
+            <div class="cards">
+                <img src="{{ url_for('static', filename='imagens/basquete/joelho.webp') }}" alt="">
+                <p>Joelheira Decathion</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='imagens/basquete/joelho.webp') }}">
+                        <input type="hidden" name="product_description" value="NATAÇÃO">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+
+            <div class="cards">
+                <img src="{{ url_for('static', filename='imagens/basquete/fla.jpeg') }}" alt="">
+                <p>Regata Flamengo</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='imagens/basquete/fla.jpeg') }}">
+                        <input type="hidden" name="product_description" value="Regata Flamengo">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+
+            <div class="cards">
+                <img src="{{ url_for('static', filename='imagens/basquete/bola.webp') }}" alt="">
+                <p>Bola de basquete Wilson NBA</p>
+                <center>
+                    <form action="{{ url_for('add_to_cart') }}" method="post">
+                        <input type="hidden" name="product_image" value="{{ url_for('static', filename='imagens/basquete/bola.webp') }}">
+                        <input type="hidden" name="product_description" value="Bola de basquete">
+                        <button type="submit">Adicionar ao carrinho</button>
+                    </form>
+                </center>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 $ - Todos os direitos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>

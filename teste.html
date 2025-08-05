@@ -1,0 +1,20 @@
+<section class="roupa-masculina">
+    <div class="div_roupa">
+        {% for produto_id, produto_info in produtos.items() %}
+            {% if 'roupa' in produto_id %}
+            <div class="roupa-item">
+                <img src="{{ url_for('static', filename=produto_info['imagem']) }}" alt="{{ produto_info['nome'] }}">
+                <h2>{{ produto_info['nome'] }}</h2>
+                <p>Preço: R$ {{ "%.2f"|format(produto_info['preco']) }}</p>
+
+                <form action="{{ url_for('adicionar_ao_carrinho') }}" method="post">
+                    <input type="hidden" name="produto_id" value="{{ produto_id }}">
+                    <input type="hidden" name="nome" value="{{ produto_info['nome'] }}">
+                    <input type="hidden" name="preco" value="{{ produto_info['preco'] }}">
+                    <button type="submit">Adicionar ao Carrinho</button>
+                </form>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aorus - Sua Loja de Artigos esportivos Online</title>
+
+    <link rel="stylesheet" href="{{url_for ('static', filename = 'css/index.css')}}">
+
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="a-input">
+                <img src="{{url_for('static' , filename = 'imagens/imgs/aorussports.png')}}" alt="Logotipo da Aorus">
+                <input type="search" placeholder="Buscar produtos, marcas e muito mais...">
+                <nav>
+                    <ul>
+                        <li><a href="{{url_for('index')}}">Página inicial</a></li>
+                        <br>
+                        <li><a href="{{url_for('categorias')}}">Categorias</a></li>
+                        <br>
+                        <li><a href="#">Contato</a></li>
+                        <br>
+                        <li><a href="#">Ofertas do dia</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="a-lista">
+                <nav>
+                    <ul>
+                    {# Verifica se o usuário está autenticado #}
+                    {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('dashboard') }}">Olá, {{ current_user.username }}</a></li>
+                    <li><a href="{{ url_for('logout') }}">Sair</a></li>
+                    {% else %}
+                    <li><a href="{{ url_for('cadastro') }}">Cadastrar-se</a></li>
+                    <br>
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <br>
+                    {% endif %}
+                    <li><a href="{{ url_for('carrinho') }}"><img src="{{ url_for('static', filename='imagens/imgs/carrinho.png') }}"  width="30"></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div class="content-description">
+            <h1>Bem-vindo à Aorus!</h1>
+            <p>Em nossa Loja , o esporte está em nosso DNA! Somos especializados em oferecer artigos esportivos de alta qualidade para quem vive o movimento, o desafio e a superação. Trabalhamos com uma ampla variedade de produtos para diferentes modalidades — do futebol ao ciclismo, da musculação à natação, do tênis ao trekking.</p>
+
+            <p>Aqui, você encontra:</p>
+            ✅ Roupas e calçados esportivos
+            ✅ Equipamentos de treino e academia
+            ✅ Acessórios para corrida, bike, yoga, lutas e muito mais
+            ✅ Itens para iniciantes, amadores e atletas profissionais
+            </p>
+            <p>Nosso compromisso é entregar conforto, desempenho e segurança em cada produto, sempre com as melhores marcas e atendimento especializado.</p>
+
+            <p>🎯 Seja qual for o seu esporte, temos o que você precisa para ir além!
+            Venha nos visitar ou compre online com praticidade e confiança.</p>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Aorus - Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
